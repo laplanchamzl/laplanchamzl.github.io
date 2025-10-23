@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>La Plancha Domicilios | Pide las Mejores Empanadas de Manizales</title>
+    <meta name="description" content="¿Antojo? ¡De Una! Pide a domicilio las empanadas y arepas de La Plancha. Calientes, crujientes y te llegan volando. ¡Pídelas ya!">
+    <meta name="keywords" content="empanadas manizales, domicilios manizales, la plancha, arepas manizales, comida a domicilio">
+    <meta name="author" content="Red Sapien">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="La Plancha Domicilios | ¡Pídelas Ya!" />
+    <meta property="og:description" content="El sabor que te encanta, ahora en tu puerta. Calientes y crujientes." />
+    <meta property="og:image" content="imagenes/logo-la-plancha.png" />
+    <meta property="og:url" content="https://[URL_DEL_SITIO_UNA_VEZ_DESPLEGADO].com" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+        :root {
+            --rojo-plancha: #D7232A;
+            --amarillo-plancha: #F2B705;
+            --blanco: #FFFFFF;
+            --negro-texto: #1C1C1C;
+            --gris-claro: #f8f9fa; /* Un gris más luminoso */
+            --fuente-principal: 'Nunito', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--blanco);
+            /* Textura sutil para el fondo */
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23f0f0f0' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+            color: var(--negro-texto);
+            font-family: var(--fuente-principal);
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 25px;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .header-logo { height: 90px; width: auto; }
+        .social-icons { display: flex; align-items: center; }
+        .social-icons a { margin-left: 18px; text-decoration: none; }
+        .social-icons svg { width: 28px; height: 28px; fill: var(--negro-texto); transition: transform 0.3s ease, fill 0.3s ease; }
+        .social-icons a:hover svg { transform: scale(1.2); fill: var(--rojo-plancha); }
+
+        .section { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 20px; box-sizing: border-box; text-align: center; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .section.is-visible { opacity: 1; transform: translateY(0); }
+
+        h1 { font-size: clamp(2.8rem, 10vw, 4.8rem); font-weight: 900; color: var(--rojo-plancha); margin: 0; line-height: 1.1; }
+        h2 { font-size: clamp(2.2rem, 8vw, 3.2rem); font-weight: 900; color: var(--rojo-plancha); margin-bottom: 50px; }
+        p.subtitle { font-size: clamp(1rem, 4vw, 1.3rem); max-width: 600px; margin: 20px auto 35px; line-height: 1.6; }
+
+        .cta-button { font-family: var(--fuente-principal); background-color: var(--amarillo-plancha); color: var(--negro-texto); border: none; padding: 20px 45px; font-size: clamp(1.2rem, 5vw, 1.8rem); font-weight: 900; cursor: pointer; border-radius: 50px; text-decoration: none; display: inline-block; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0px 8px 20px rgba(242, 183, 5, 0.4); animation: pulse 2s infinite; }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0px 10px 25px rgba(242, 183, 5, 0.6); animation-play-state: paused; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+        #productos { background-color: var(--gris-claro); }
+        #productos .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; width: 100%; max-width: 1200px; }
+
+        .product-card {
+            background-color: var(--blanco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover { transform: translateY(-12px); box-shadow: 0 18px 35px rgba(0,0,0,0.12); }
+        .product-card .img-container { width: 100%; height: 240px; overflow: hidden; }
+        .product-card .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .product-card:hover .img-container img { transform: scale(1.1); }
+        .product-card .text-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-card h3 { font-size: 1.6rem; font-weight: 900; color: var(--rojo-plancha); margin: 0 0 10px; }
+        .product-card p { font-size: 1rem; margin: 0 0 15px; color: #555; flex-grow: 1; }
+        .product-card .price { font-size: 1.5rem; font-weight: 900; color: var(--negro-texto); margin-bottom: 20px; }
+        .product-card .cta-secondary { background: var(--amarillo-plancha); color: var(--negro-texto); padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 700; display: inline-block; transition: transform 0.2s ease; align-self: center; }
+        .product-card .cta-secondary:hover { transform: scale(1.1); }
+
+        #oferta-especial { background-color: var(--rojo-plancha); color: var(--blanco); }
+        #oferta-especial h2 { color: var(--blanco); }
+        #oferta-especial .combo-container { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; }
+        #oferta-especial .combo-img { max-width: 350px; width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        #oferta-especial .combo-details { max-width: 450px; text-align: left; }
+        #oferta-especial .combo-details h3 { font-size: 2rem; font-weight: 900; margin-top: 0; }
+        #oferta-especial .combo-details .price { font-size: 1.8rem; font-weight: 900; color: var(--amarillo-plancha); margin: 10px 0; }
+        #oferta-especial .combo-details .cta-button { background-color: var(--amarillo-plancha); color: var(--negro-texto); }
+
+        #social-proof { background-color: var(--gris-claro); }
+        .video-container-portrait {
+            width: 100%;
+            max-width: 320px; /* Ancho típico de un teléfono */
+            height: 570px; /* Alto para una relación 9:16 */
+            border-radius: 30px; /* Bordes de teléfono */
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border: 8px solid #111;
+            background: #111;
+        }
+        .video-container-portrait video { width: 100%; height: 100%; object-fit: cover; }
+        
+        footer { background-color: var(--negro-texto); color: var(--blanco); padding: 30px 20px; text-align: center; }
+        footer p { margin: 5px 0; }
+        .footer-credit { font-size: 1.1rem; font-weight: 700; }
+        .footer-credit a { color: var(--amarillo-plancha); text-decoration: none; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Imagenes/Logo-la-plancha.png" alt="Logo La Plancha" class="header-logo">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/laplanchamanizales/" aria-label="Instagram" target="_blank"><svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+            <a href="https://www.facebook.com/laplanchamanizales/" aria-label="Facebook" target="_blank"><svg viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></a>
+            <a href="https://wa.me/573104695637" aria-label="WhatsApp" target="_blank"><svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></a>
+        </div>
+    </header>
+
+    <section id="hero" class="section">
+        <h1>¿Antojo? ¡De Una!</h1>
+        <p class="subtitle">Las empanadas y arepas que te encantan, más calientes y crujientes que nunca. ¡Pide y te llegan volando!</p>
+        <a href="https://wa.me/573104695637?text=Hola!%20Quiero%20pedir%20domicilio%20de%20La%20Plancha%20YA!" target="_blank" class="cta-button">¡PÍDELAS YA!</a>
+    </section>
+
+    <section id="productos" class="section">
+        <h2>Arma tu Parche</h2>
+        <div class="grid">
+            <!-- Combo 1 -->
+            <div class="product-card">
+                <div class="img-container"><img src="Imagenes/em1.jpg" alt="Combo 20 empanadas S"></div>
+                <div class="text-content">
+                    <h3>Combo Talla S</h3>
+                    <p>20 empanadas talla S + gaseosa + salsa ensalada.</p>
+                    <div class="price">$22.000 + domicilio</div>
+                    <a href="https://wa.me/573104695637?text=Hola!%20Quiero%20pedir%20el%20Combo%20Talla%20S%20de%20$22.000" target="_blank" class="cta-secondary">¡Lo Quiero!</a>
+                </div>
+            </div>
+            <!-- Combo 2 -->
+            <div class="product-card">
+                <div class="img-container"><img src="Imagenes/em2.jpg" alt="Combo 4 empanadas"></div>
+                <div class="text-content">
+                    <h3>Combo Campeón</h3>
+                    <p>4 de nuestras mejores empanadas (Mixta, Pollo Queso Tocineta, Chicharrón, Carne) + 2 salsas + gaseosa grande.</p>
+                    <div class="price">$18.000 + domicilio</div>
+                    <a href="https://wa.me/573104695637?text=Hola!%20Quiero%20pedir%20el%20Combo%20Campeón%20de%20$18.000" target="_blank" class="cta-secondary">¡Lo Quiero!</a>
+                </div>
+            </div>
+            <!-- Combo 3 -->
+            <div class="product-card">
+                <div class="img-container"><img src="Imagenes/em3.jpg" alt="Combo Plancherotti"></div>
+                <div class="text-content">
+                    <h3>Combo Plancherotti</h3>
+                    <p>1 plancherotti de pollo + 1 empanada mixta + gaseosa personal + salsa tártara.</p>
+                    <div class="price">$12.000 + domicilio</div>
+                    <a href="https://wa.me/573104695637?text=Hola!%20Quiero%20pedir%20el%20Combo%20Plancherotti%20de%20$12.000" target="_blank" class="cta-secondary">¡Lo Quiero!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="oferta-especial" class="section">
+        <div class="combo-container">
+            <img src="Imagenes/em4.jpg" alt="Combo Especial" class="combo-img">
+            <div class="combo-details">
+                <h2>¡OJO A ESTO!</h2>
+                <h3>El Combo Goleador</h3>
+                <p>El preferido de la casa: 4 de nuestras mejores empanadas (2 de carne, 2 de pollo) + 2 salsas de la casa + 1 gaseosa grande. ¡Perfecto para ver el partido!</p>
+                <div class="price">Solo por hoy: $24.900</div>
+                <a href="https://wa.me/573104695637?text=Hola,%20quiero%20el%20Combo%20Goleador%20de%20hoy!" target="_blank" class="cta-button">¡LO QUIERO AHORA!</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="social-proof" class="section">
+        <h2>No lo pienses más... ¡Hasta el Campeón nos elige!</h2>
+        <div class="video-container-portrait">
+            <video autoplay muted loop controls poster="imagenes/dayro-poster-placeholder.jpg"><source src="Video/La-Plancha-Dayro-moreno.mp4" type="video/mp4">Tu navegador no soporta videos.</video>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 La Plancha Manizales. Todos los derechos reservados.</p>
+        <p class="footer-credit">Desarrollado con ❤️ por <a href="#URL_RED_SAPIEN" target="_blank">Red Sapien</a>.</p>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => { observer.observe(section); });
+    </script>
+<!-- Whatsapp flotante -->
+
+  <!-- ===== Botón flotante de WhatsApp (aparece tras 28 segundos) ===== -->
+  <a href="https://wa.me/573104695637?text=Hola%20deseo%2C%20pedir%20algo..." class="whatsapp-float hidden"
+    target="_blank" aria-label="Contáctanos por WhatsApp">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"
+      class="whatsapp-icon">
+  </a>
+
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(145deg, #00d084, #00735a);
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      box-shadow: 0 0 25px rgba(0, 255, 170, 0.4);
+      animation: signalPulse 2.5s infinite ease-in-out;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(0, 255, 170, 0.6);
+    }
+
+    .whatsapp-icon {
+      width: 45px;
+      height: 45px;
+      filter: brightness(0) invert(1);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes signalPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 170, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 0 0 16px rgba(0, 255, 170, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 170, 0);
+      }
+    }
+  </style>
+
+  <script>
+    // Mostrar el botón después de 28 segundos
+    setTimeout(() => {
+      document.querySelector('.whatsapp-float').classList.remove('hidden');
+    }, 9000);
+  </script>
+
+
+  <!-- end info section -->
+
+
+</body>
+</html>
